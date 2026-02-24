@@ -1,0 +1,43 @@
+name: DKE
+options:
+  bundleIdPrefix: com.incentro.ai
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+settings:
+  SWIFT_VERSION: "5.9"
+  MACOSX_DEPLOYMENT_TARGET: "14.0"
+targets:
+  DKE:
+    type: application
+    platform: macOS
+    sources:
+      - DKE
+    settings:
+      INFOPLIST_FILE: DKE/Info.plist
+      CODE_SIGN_ENTITLEMENTS: DKE/DKE.entitlements
+      PRODUCT_BUNDLE_IDENTIFIER: com.incentro.ai.DKE
+      GENERATE_INFOPLIST_FILE: false
+    info:
+      path: DKE/Info.plist
+      properties:
+        NSMicrophoneUsageDescription: "DKE needs microphone access to record meetings for knowledge extraction."
+        NSScreenCaptureUsageDescription: "DKE needs screen capture permission to record system audio from virtual meetings."
+        NSAppTransportSecurity:
+          NSExceptionDomains:
+            localhost:
+              NSExceptionAllowsInsecureHTTPLoads: true
+    entitlements:
+      path: DKE/DKE.entitlements
+      properties:
+        com.apple.security.device.audio-input: true
+  DKETests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - DKETests
+    dependencies:
+      - target: DKE
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.incentro.ai.DKETests

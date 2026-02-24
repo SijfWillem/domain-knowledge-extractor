@@ -1,0 +1,60 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserdata
+*.xcworkspace
+!*.xcodeproj/project.xcworkspace/
+xcuserdata/
+
+# Xcode user-specific files
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+*.xcschememanagement.plist
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+
+# CocoaPods (if used later)
+Pods/
+Podfile.lock
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Build artifacts
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.hmap
+*.app
+
+# Provisioning profiles
+*.mobileprovision
+*.provisionprofile
+
+# Playground
+timeline.xctimeline
+playground.xcworkspace
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output

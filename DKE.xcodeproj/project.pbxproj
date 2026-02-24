@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F90F87DEAB2B14826B418A9 /* DKETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B466DAF16ED137C69AF13E04 /* DKETests.swift */; };
+		B32DD3AA961F70C739AF8580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF83A8DFA3B207D77381D539 /* Assets.xcassets */; };
+		BDC0F4AD42FD9E62B04231BF /* DKEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7966C821012806955E6A332B /* DKEApp.swift */; };
+		BF467FFFC3BC75A29A112DEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6498D1A166A08CB4CDD489FC /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48A5B35AE413C8FA69CA7D9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1ABEEE27090E697DEF4A3AA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D214C06D5B5A239C255ACB97;
+			remoteInfo = DKE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0237B45C3BE12236312AF679 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		0B537A52BBDC657E0532D2C7 /* DKE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A499F319F5629DBABAF29C6 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		54186167EE6B24308879F13D /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		5AF224A0F2864B47D556888A /* DKE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DKE.entitlements; sourceTree = "<group>"; };
+		6498D1A166A08CB4CDD489FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6F7F99E38DB2A27724EA1C88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7966C821012806955E6A332B /* DKEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKEApp.swift; sourceTree = "<group>"; };
+		79A9626DBF9F5E476206EA98 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		8561DD212D5019AD2AEBE102 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		895AEF2D4E6ADDA2DDB1A398 /* DKETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DKETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		940125186A4C2279B68C9281 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		9B82F975E4A8190F1EE0AC4A /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		9D41EE4E81475D10910C4CD2 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		B466DAF16ED137C69AF13E04 /* DKETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DKETests.swift; sourceTree = "<group>"; };
+		BF83A8DFA3B207D77381D539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE9743C59E1C5D7B11E9360E /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0555F72D52CDE607920B4204 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				3A499F319F5629DBABAF29C6 /* .gitkeep */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+		0CF43E3284D990BF1B591926 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B537A52BBDC657E0532D2C7 /* DKE.app */,
+				895AEF2D4E6ADDA2DDB1A398 /* DKETests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		266D4C1C0F434BFD274AEE58 /* DKE */ = {
+			isa = PBXGroup;
+			children = (
+				BF83A8DFA3B207D77381D539 /* Assets.xcassets */,
+				6498D1A166A08CB4CDD489FC /* ContentView.swift */,
+				5AF224A0F2864B47D556888A /* DKE.entitlements */,
+				7966C821012806955E6A332B /* DKEApp.swift */,
+				6F7F99E38DB2A27724EA1C88 /* Info.plist */,
+				0555F72D52CDE607920B4204 /* Analysis */,
+				B526F10882D50B7D4F70CDDF /* App */,
+				8EA68DA77FFA7A852AB4B3AB /* Audio */,
+				7C19799A25B1CC6F3D05933D /* KnowledgeBase */,
+				6EC05021F54D3F8A20915570 /* Models */,
+				B04C9F779AE927CF8072A515 /* Nudge */,
+				D027AB86F437C7A5B5924083 /* Settings */,
+				827C75C067A8421E1AD38560 /* Transcription */,
+				D6D42C33FA369E1C189A4606 /* Widget */,
+			);
+			path = DKE;
+			sourceTree = "<group>";
+		};
+		6EC05021F54D3F8A20915570 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				940125186A4C2279B68C9281 /* .gitkeep */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C19799A25B1CC6F3D05933D /* KnowledgeBase */ = {
+			isa = PBXGroup;
+			children = (
+				9B82F975E4A8190F1EE0AC4A /* .gitkeep */,
+			);
+			path = KnowledgeBase;
+			sourceTree = "<group>";
+		};
+		827C75C067A8421E1AD38560 /* Transcription */ = {
+			isa = PBXGroup;
+			children = (
+				79A9626DBF9F5E476206EA98 /* .gitkeep */,
+			);
+			path = Transcription;
+			sourceTree = "<group>";
+		};
+		8EA68DA77FFA7A852AB4B3AB /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				54186167EE6B24308879F13D /* .gitkeep */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		A595B9EC3795BBD8E7152689 = {
+			isa = PBXGroup;
+			children = (
+				266D4C1C0F434BFD274AEE58 /* DKE */,
+				D77C78BA5008651268A00232 /* DKETests */,
+				0CF43E3284D990BF1B591926 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B04C9F779AE927CF8072A515 /* Nudge */ = {
+			isa = PBXGroup;
+			children = (
+				EE9743C59E1C5D7B11E9360E /* .gitkeep */,
+			);
+			path = Nudge;
+			sourceTree = "<group>";
+		};
+		B526F10882D50B7D4F70CDDF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9D41EE4E81475D10910C4CD2 /* .gitkeep */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D027AB86F437C7A5B5924083 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8561DD212D5019AD2AEBE102 /* .gitkeep */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D6D42C33FA369E1C189A4606 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				0237B45C3BE12236312AF679 /* .gitkeep */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		D77C78BA5008651268A00232 /* DKETests */ = {
+			isa = PBXGroup;
+			children = (
+				B466DAF16ED137C69AF13E04 /* DKETests.swift */,
+			);
+			path = DKETests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		739C4A9F5EE658CF73E199F8 /* DKETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD730F4E0EE5BF45A5E2320 /* Build configuration list for PBXNativeTarget "DKETests" */;
+			buildPhases = (
+				9351385737701D34913B17EB /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2205E82713375B1B60159432 /* PBXTargetDependency */,
+			);
+			name = DKETests;
+			packageProductDependencies = (
+			);
+			productName = DKETests;
+			productReference = 895AEF2D4E6ADDA2DDB1A398 /* DKETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D214C06D5B5A239C255ACB97 /* DKE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6647039709FEB0938ACEB7EC /* Build configuration list for PBXNativeTarget "DKE" */;
+			buildPhases = (
+				ECC738A2634FC0A0FB9F1062 /* Sources */,
+				5C31868FFCBF093331E9734E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DKE;
+			packageProductDependencies = (
+			);
+			productName = DKE;
+			productReference = 0B537A52BBDC657E0532D2C7 /* DKE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1ABEEE27090E697DEF4A3AA9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = A78DDF8B5D83DC37BDDE2EF2 /* Build configuration list for PBXProject "DKE" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A595B9EC3795BBD8E7152689;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D214C06D5B5A239C255ACB97 /* DKE */,
+				739C4A9F5EE658CF73E199F8 /* DKETests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C31868FFCBF093331E9734E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B32DD3AA961F70C739AF8580 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9351385737701D34913B17EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F90F87DEAB2B14826B418A9 /* DKETests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECC738A2634FC0A0FB9F1062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF467FFFC3BC75A29A112DEC /* ContentView.swift in Sources */,
+				BDC0F4AD42FD9E62B04231BF /* DKEApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2205E82713375B1B60159432 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D214C06D5B5A239C255ACB97 /* DKE */;
+			targetProxy = 48A5B35AE413C8FA69CA7D9D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0E7540F7A4895685CF863BBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DKE/DKE.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DKE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.incentro.ai.DKE;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4297E1DEF11343337DE541FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		49BC5427F3E5D687C1F23DE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		636699F6FBFDDD3B3B73B93B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DKE/DKE.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = DKE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.incentro.ai.DKE;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DE0647F973395BACCDD67F1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.incentro.ai.DKETests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DKE.app/Contents/MacOS/DKE";
+			};
+			name = Release;
+		};
+		F71C1C44491387D558FEDFB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.incentro.ai.DKETests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DKE.app/Contents/MacOS/DKE";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6647039709FEB0938ACEB7EC /* Build configuration list for PBXNativeTarget "DKE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636699F6FBFDDD3B3B73B93B /* Debug */,
+				0E7540F7A4895685CF863BBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A78DDF8B5D83DC37BDDE2EF2 /* Build configuration list for PBXProject "DKE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4297E1DEF11343337DE541FD /* Debug */,
+				49BC5427F3E5D687C1F23DE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BCD730F4E0EE5BF45A5E2320 /* Build configuration list for PBXNativeTarget "DKETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71C1C44491387D558FEDFB5 /* Debug */,
+				DE0647F973395BACCDD67F1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1ABEEE27090E697DEF4A3AA9 /* Project object */;
+}
