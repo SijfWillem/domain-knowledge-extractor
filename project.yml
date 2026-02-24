@@ -5,6 +5,16 @@ options:
     macOS: "14.0"
   xcodeVersion: "15.0"
   createIntermediateGroups: true
+packages:
+  whisper:
+    url: https://github.com/ggerganov/whisper.cpp
+    from: "1.7.0"
+  OpenAI:
+    url: https://github.com/MacPaw/OpenAI
+    from: "0.3.0"
+  AnthropicSDK:
+    url: https://github.com/anthropics/anthropic-sdk-swift
+    from: "0.2.0"
 settings:
   SWIFT_VERSION: "5.9"
   MACOSX_DEPLOYMENT_TARGET: "14.0"
@@ -28,6 +38,11 @@ targets:
           NSExceptionDomains:
             localhost:
               NSExceptionAllowsInsecureHTTPLoads: true
+    dependencies:
+      - package: whisper
+      - package: OpenAI
+      - package: AnthropicSDK
+        product: Anthropic
     entitlements:
       path: DKE/DKE.entitlements
       properties:

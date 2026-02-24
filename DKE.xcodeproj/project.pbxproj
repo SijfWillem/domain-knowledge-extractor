@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C714DFB3F30FB24706AEFEF /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3C39850867F28EF5C8464359 /* OpenAI */; };
 		2F90F87DEAB2B14826B418A9 /* DKETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B466DAF16ED137C69AF13E04 /* DKETests.swift */; };
+		8C759DE49598B96B305F4CC7 /* Anthropic in Frameworks */ = {isa = PBXBuildFile; productRef = D0EEC2ACD81A47AB59F807E7 /* Anthropic */; };
+		A9E00ABB0F2862288C76B400 /* whisper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CEC8D3FC5241ACD2B6D6D2C /* whisper */; };
 		B32DD3AA961F70C739AF8580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF83A8DFA3B207D77381D539 /* Assets.xcassets */; };
 		BDC0F4AD42FD9E62B04231BF /* DKEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7966C821012806955E6A332B /* DKEApp.swift */; };
 		BF467FFFC3BC75A29A112DEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6498D1A166A08CB4CDD489FC /* ContentView.swift */; };
@@ -42,6 +45,19 @@
 		BF83A8DFA3B207D77381D539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE9743C59E1C5D7B11E9360E /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7F9CA6B57AFCAE286317EF1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9E00ABB0F2862288C76B400 /* whisper in Frameworks */,
+				2C714DFB3F30FB24706AEFEF /* OpenAI in Frameworks */,
+				8C759DE49598B96B305F4CC7 /* Anthropic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0555F72D52CDE607920B4204 /* Analysis */ = {
@@ -190,6 +206,7 @@
 			buildPhases = (
 				ECC738A2634FC0A0FB9F1062 /* Sources */,
 				5C31868FFCBF093331E9734E /* Resources */,
+				7F9CA6B57AFCAE286317EF1F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,6 +214,9 @@
 			);
 			name = DKE;
 			packageProductDependencies = (
+				7CEC8D3FC5241ACD2B6D6D2C /* whisper */,
+				3C39850867F28EF5C8464359 /* OpenAI */,
+				D0EEC2ACD81A47AB59F807E7 /* Anthropic */,
 			);
 			productName = DKE;
 			productReference = 0B537A52BBDC657E0532D2C7 /* DKE.app */;
@@ -221,6 +241,11 @@
 			);
 			mainGroup = A595B9EC3795BBD8E7152689;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1ACDC448A4B1A8F26B66BA2C /* XCRemoteSwiftPackageReference "anthropic-sdk-swift" */,
+				2A9927F607D029D9C4FEF7F2 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				293FCD10C058233447FC5BF8 /* XCRemoteSwiftPackageReference "whisper.cpp" */,
+			);
 			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
@@ -487,6 +512,51 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1ACDC448A4B1A8F26B66BA2C /* XCRemoteSwiftPackageReference "anthropic-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/anthropics/anthropic-sdk-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+		293FCD10C058233447FC5BF8 /* XCRemoteSwiftPackageReference "whisper.cpp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ggerganov/whisper.cpp";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+		2A9927F607D029D9C4FEF7F2 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C39850867F28EF5C8464359 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A9927F607D029D9C4FEF7F2 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+		7CEC8D3FC5241ACD2B6D6D2C /* whisper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 293FCD10C058233447FC5BF8 /* XCRemoteSwiftPackageReference "whisper.cpp" */;
+			productName = whisper;
+		};
+		D0EEC2ACD81A47AB59F807E7 /* Anthropic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1ACDC448A4B1A8F26B66BA2C /* XCRemoteSwiftPackageReference "anthropic-sdk-swift" */;
+			productName = Anthropic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1ABEEE27090E697DEF4A3AA9 /* Project object */;
 }
