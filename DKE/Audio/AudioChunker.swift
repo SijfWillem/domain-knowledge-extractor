@@ -1,11 +1,13 @@
 import AVFoundation
 import CoreMedia
+import os
 
-final class AudioChunker {
+final class AudioChunker: @unchecked Sendable {
     private let chunkDuration: TimeInterval
     private let sampleRate: Double
     private var accumulatedSamples: [Float] = []
     private let samplesPerChunk: Int
+    private let lock = os.OSAllocatedUnfairLock()
 
     var onChunkReady: (([Float]) -> Void)?
 
@@ -18,7 +20,7 @@ final class AudioChunker {
     func process(buffer: AVAudioPCMBuffer) {
         guard let floatData = buffer.floatChannelData else { return }
         let samples = Array(UnsafeBufferPointer(start: floatData[0], count: Int(buffer.frameLength)))
-        accumulatedSamples.append(contentsOf: samples)
+        lock.withLock { accumulatedSamples.append(contentsOf: samples) }
         emitChunksIfReady()
     }
 
@@ -34,24 +36,32 @@ final class AudioChunker {
         let samples: [Float] = data.withUnsafeBytes { raw in
             Array(raw.bindMemory(to: Float.self).prefix(floatCount))
         }
-        accumulatedSamples.append(contentsOf: samples)
+        lock.withLock { accumulatedSamples.append(contentsOf: samples) }
         emitChunksIfReady()
     }
 
     func flush() {
-        guard !accumulatedSamples.isEmpty else { return }
-        if accumulatedSamples.count < samplesPerChunk {
-            accumulatedSamples.append(contentsOf: [Float](repeating: 0.0, count: samplesPerChunk - accumulatedSamples.count))
+        let chunk: [Float]? = lock.withLock {
+            guard !accumulatedSamples.isEmpty else { return nil }
+            if accumulatedSamples.count < samplesPerChunk {
+                accumulatedSamples.append(contentsOf: [Float](repeating: 0.0, count: samplesPerChunk - accumulatedSamples.count))
+            }
+            let c = Array(accumulatedSamples.prefix(samplesPerChunk))
+            accumulatedSamples.removeAll()
+            return c
         }
-        let chunk = Array(accumulatedSamples.prefix(samplesPerChunk))
-        accumulatedSamples.removeAll()
-        onChunkReady?(chunk)
+        if let chunk { onChunkReady?(chunk) }
     }
 
     private func emitChunksIfReady() {
-        while accumulatedSamples.count >= samplesPerChunk {
-            let chunk = Array(accumulatedSamples.prefix(samplesPerChunk))
-            accumulatedSamples.removeFirst(samplesPerChunk)
+        while true {
+            let chunk: [Float]? = lock.withLock {
+                guard accumulatedSamples.count >= samplesPerChunk else { return nil }
+                let c = Array(accumulatedSamples.prefix(samplesPerChunk))
+                accumulatedSamples.removeFirst(samplesPerChunk)
+                return c
+            }
+            guard let chunk else { break }
             onChunkReady?(chunk)
         }
     }
