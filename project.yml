@@ -5,16 +5,7 @@ options:
     macOS: "14.0"
   xcodeVersion: "15.0"
   createIntermediateGroups: true
-packages:
-  whisper:
-    url: https://github.com/ggerganov/whisper.cpp
-    from: "1.7.0"
-  OpenAI:
-    url: https://github.com/MacPaw/OpenAI
-    from: "0.3.0"
-  AnthropicSDK:
-    url: https://github.com/anthropics/anthropic-sdk-swift
-    from: "0.2.0"
+packages: {}
 settings:
   SWIFT_VERSION: "5.9"
   MACOSX_DEPLOYMENT_TARGET: "14.0"
@@ -33,16 +24,13 @@ targets:
       path: DKE/Info.plist
       properties:
         NSMicrophoneUsageDescription: "DKE needs microphone access to record meetings for knowledge extraction."
+        NSSpeechRecognitionUsageDescription: "DKE uses speech recognition to transcribe meetings in real-time for knowledge extraction."
         NSScreenCaptureUsageDescription: "DKE needs screen capture permission to record system audio from virtual meetings."
         NSAppTransportSecurity:
           NSExceptionDomains:
             localhost:
               NSExceptionAllowsInsecureHTTPLoads: true
-    dependencies:
-      - package: whisper
-      - package: OpenAI
-      - package: AnthropicSDK
-        product: Anthropic
+    dependencies: []
     entitlements:
       path: DKE/DKE.entitlements
       properties:

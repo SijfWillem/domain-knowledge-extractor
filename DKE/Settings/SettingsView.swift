@@ -8,29 +8,33 @@ struct SettingsView: View {
     @State private var newModelType: ModelType = .ollama
     @State private var newModelIdentifier = ""
     @State private var newApiKey = ""
-    @State private var whisperLoadError: String?
 
     var body: some View {
         Form {
             Section("Registered Models") {
+                if router.providers.isEmpty {
+                    Text("No models registered. Add one below.")
+                        .foregroundStyle(.secondary)
+                }
                 ForEach(Array(router.providers.keys.sorted()), id: \.self) { key in
                     HStack {
                         Text(key).font(.headline)
                         Spacer()
-                        Text(router.providers[key]?.name ?? "").foregroundStyle(.secondary)
+                        if let modelId = router.modelIdentifiers[key] {
+                            Text(modelId).foregroundStyle(.secondary)
+                        }
                     }
                 }
             }
 
             Section("Add Model") {
-                TextField("Name", text: $newModelName)
+                TextField("Display Name", text: $newModelName)
                 Picker("Provider", selection: $newModelType) {
                     Text("Ollama").tag(ModelType.ollama)
                     Text("OpenAI Compatible").tag(ModelType.openAICompatible)
                     Text("Anthropic").tag(ModelType.anthropic)
                 }
-                TextField("Endpoint", text: $newModelEndpoint)
-                TextField("Model ID (e.g. llama3.1)", text: $newModelIdentifier)
+                TextField("Model ID (e.g. llama3.1:8b)", text: $newModelIdentifier)
                 if newModelType == .anthropic || newModelType == .openAICompatible {
                     SecureField("API Key", text: $newApiKey)
                 }
@@ -49,19 +53,17 @@ struct SettingsView: View {
                 }
             }
 
-            Section("Whisper Model") {
+            Section("Transcription") {
                 HStack {
                     Circle()
-                        .fill(orchestrator.whisperModelLoaded ? Color.green : Color.orange)
+                        .fill(orchestrator.transcriptionManager.speechTranscriber.isAuthorized ? Color.green : Color.orange)
                         .frame(width: 8, height: 8)
-                    Text(orchestrator.whisperModelLoaded ? "Model loaded" : "No model loaded")
+                    Text(orchestrator.transcriptionManager.speechTranscriber.isAuthorized
+                         ? "Speech recognition authorized"
+                         : "Speech recognition not authorized")
                         .font(.caption)
                 }
-                Button("Load Whisper Model...") { pickWhisperModel() }
-                if let error = whisperLoadError {
-                    Text(error).font(.caption).foregroundStyle(.red)
-                }
-                Text("Place .bin model files in ~/Library/Application Support/DKE/models/ for auto-loading.")
+                Text("Uses Apple's built-in Speech framework for on-device transcription.")
                     .font(.caption).foregroundStyle(.secondary)
             }
         }
@@ -91,23 +93,6 @@ struct SettingsView: View {
         newModelName = ""
         newModelIdentifier = ""
         newApiKey = ""
-    }
-
-    private func pickWhisperModel() {
-        let panel = NSOpenPanel()
-        panel.allowedContentTypes = [.data]
-        panel.allowsMultipleSelection = false
-        panel.message = "Select a Whisper .bin model file"
-        if panel.runModal() == .OK, let url = panel.url {
-            Task {
-                do {
-                    whisperLoadError = nil
-                    try await orchestrator.loadWhisperModel(path: url.path)
-                } catch {
-                    whisperLoadError = error.localizedDescription
-                }
-            }
-        }
     }
 
     private func taskBinding(for task: DKETask) -> Binding<String?> {

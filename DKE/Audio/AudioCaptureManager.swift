@@ -10,18 +10,23 @@ final class AudioCaptureManager: ObservableObject {
     private let systemCapture = SystemAudioCapture()
     let chunker = AudioChunker()
 
+    /// Raw audio buffer callback for speech recognition
+    var onRawAudioBuffer: ((AVAudioPCMBuffer) -> Void)?
+
     func startRecording() async throws {
         switch mode {
         case .inPerson:
-            try micCapture.startCapture { [chunker] buffer, _ in
-                chunker.process(buffer: buffer)
+            try micCapture.startCapture { [weak self] buffer, _ in
+                self?.onRawAudioBuffer?(buffer)
+                self?.chunker.process(buffer: buffer)
             }
         case .virtual:
-            try micCapture.startCapture { [chunker] buffer, _ in
-                chunker.process(buffer: buffer)
+            try micCapture.startCapture { [weak self] buffer, _ in
+                self?.onRawAudioBuffer?(buffer)
+                self?.chunker.process(buffer: buffer)
             }
-            try await systemCapture.startCapture { [chunker] sampleBuffer in
-                chunker.process(sampleBuffer: sampleBuffer)
+            try await systemCapture.startCapture { [weak self] sampleBuffer in
+                self?.chunker.process(sampleBuffer: sampleBuffer)
             }
         }
         isRecording = true

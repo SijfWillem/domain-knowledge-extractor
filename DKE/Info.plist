@@ -33,5 +33,7 @@
 	<string>DKE needs microphone access to record meetings for knowledge extraction.</string>
 	<key>NSScreenCaptureUsageDescription</key>
 	<string>DKE needs screen capture permission to record system audio from virtual meetings.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>DKE uses speech recognition to transcribe meetings in real-time for knowledge extraction.</string>
 </dict>
 </plist>

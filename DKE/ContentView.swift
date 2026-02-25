@@ -13,7 +13,7 @@ struct ContentView: View {
                     Label("Knowledge Base", systemImage: "brain")
                 }
                 NavigationLink {
-                    SettingsView(router: router)
+                    SettingsView(router: router, orchestrator: orchestrator)
                 } label: {
                     Label("Settings", systemImage: "gear")
                 }

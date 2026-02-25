@@ -18,10 +18,7 @@ struct DKEApp: App {
         WindowGroup {
             ContentView(orchestrator: orchestrator, router: router)
                 .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                .onAppear {
-                    showWidget()
-                    Task { await orchestrator.autoLoadWhisperModel() }
-                }
+                .onAppear { showWidget() }
         }
         Settings {
             SettingsView(router: router, orchestrator: orchestrator)

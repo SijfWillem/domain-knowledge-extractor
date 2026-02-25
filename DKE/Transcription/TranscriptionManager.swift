@@ -1,38 +1,33 @@
 import Foundation
+import AVFoundation
 
 @MainActor
 final class TranscriptionManager: ObservableObject {
     @Published var transcript: [(text: String, speaker: String?, startTime: Double, endTime: Double)] = []
     @Published var latestText: String = ""
 
-    private var whisperContext: WhisperContext?
-    private var elapsedSeconds: Double = 0
+    let speechTranscriber = SpeechTranscriber()
 
-    func loadModel(path: String) async throws {
-        whisperContext = try WhisperContext(modelPath: path)
+    func requestAuthorization() {
+        speechTranscriber.requestAuthorization()
     }
 
-    func processChunk(_ samples: [Float]) {
-        guard let ctx = whisperContext else { return }
-        let chunkStart = elapsedSeconds
-        elapsedSeconds += Double(samples.count) / 16000.0
+    func startLiveTranscription() {
+        speechTranscriber.startRecognition()
+    }
 
-        Task {
-            do {
-                let segments = try await ctx.transcribe(samples: samples)
-                await MainActor.run {
-                    for segment in segments {
-                        let text = segment.text.trimmingCharacters(in: .whitespacesAndNewlines)
-                        guard !text.isEmpty else { continue }
-                        let startTime = chunkStart + Double(segment.start) / 100.0
-                        let endTime = chunkStart + Double(segment.end) / 100.0
-                        transcript.append((text: text, speaker: nil, startTime: startTime, endTime: endTime))
-                        latestText = text
-                    }
-                }
-            } catch {
-                print("Transcription error: \(error)")
-            }
-        }
+    func stopLiveTranscription() {
+        speechTranscriber.stopRecognition()
+        // Copy final results
+        transcript = speechTranscriber.transcript
+        latestText = speechTranscriber.latestText
+    }
+
+    /// Feed a raw audio buffer from AVAudioEngine to the speech recognizer.
+    func feedAudioBuffer(_ buffer: AVAudioPCMBuffer) {
+        speechTranscriber.appendAudioBuffer(buffer)
+        // Sync published properties
+        transcript = speechTranscriber.transcript
+        latestText = speechTranscriber.latestText
     }
 }

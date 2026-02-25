@@ -1,12 +1,12 @@
 import Foundation
 import SwiftUI
+import AVFoundation
 
 @MainActor
 final class SessionOrchestrator: ObservableObject {
     @Published var isActive = false
     @Published var currentNudges: [NudgeSuggestion] = []
     @Published var transcriptText: String = ""
-    @Published var whisperModelLoaded = false
 
     let audioManager = AudioCaptureManager()
     let transcriptionManager = TranscriptionManager()
@@ -16,35 +16,28 @@ final class SessionOrchestrator: ObservableObject {
 
     private var nudgeTimer: Timer?
     private var analysisTimer: Timer?
+    private var transcriptSyncTimer: Timer?
     private var currentSession: SessionMO?
 
     init(router: LLMRouter) {
         self.router = router
         self.analysisEngine = AnalysisEngine(router: router)
-    }
-
-    func loadWhisperModel(path: String) async throws {
-        try await transcriptionManager.loadModel(path: path)
-        whisperModelLoaded = true
-    }
-
-    func autoLoadWhisperModel() async {
-        let modelsDir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("DKE/models")
-        guard let files = try? FileManager.default.contentsOfDirectory(at: modelsDir, includingPropertiesForKeys: nil),
-              let modelFile = files.first(where: { $0.pathExtension == "bin" }) else { return }
-        try? await loadWhisperModel(path: modelFile.path)
+        transcriptionManager.requestAuthorization()
     }
 
     func startSession(mode: SessionMode) async throws {
         audioManager.mode = mode
-        audioManager.chunker.onChunkReady = { [weak self] samples in
+
+        // Wire audio buffers to the speech recognizer for real-time transcription
+        audioManager.onRawAudioBuffer = { [weak self] buffer in
             Task { @MainActor in
-                guard let self else { return }
-                self.transcriptionManager.processChunk(samples)
-                self.transcriptText = self.transcriptionManager.latestText
+                self?.transcriptionManager.feedAudioBuffer(buffer)
             }
         }
+
+        // Start live speech recognition
+        transcriptionManager.startLiveTranscription()
+
         try await audioManager.startRecording()
 
         let title = "Session \(DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .short))"
@@ -52,6 +45,14 @@ final class SessionOrchestrator: ObservableObject {
         try? dataStore.save()
 
         isActive = true
+
+        // Sync transcript text periodically for the widget
+        transcriptSyncTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            Task { @MainActor in
+                guard let self else { return }
+                self.transcriptText = self.transcriptionManager.latestText
+            }
+        }
 
         nudgeTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
             Task { @MainActor in await self?.generateNudges() }
@@ -64,10 +65,15 @@ final class SessionOrchestrator: ObservableObject {
     func stopSession() async throws {
         nudgeTimer?.invalidate()
         analysisTimer?.invalidate()
+        transcriptSyncTimer?.invalidate()
         nudgeTimer = nil
         analysisTimer = nil
+        transcriptSyncTimer = nil
+
+        transcriptionManager.stopLiveTranscription()
         try await audioManager.stopRecording()
         isActive = false
+
         await analyzeRecent()
         persistTranscript()
         persistKnowledge()
@@ -78,7 +84,7 @@ final class SessionOrchestrator: ObservableObject {
     private func generateNudges() async {
         let recent = transcriptionManager.transcript.suffix(12).map(\.text).joined(separator: " ")
         guard !recent.isEmpty else { return }
-        let modelId = router.modelIdentifier(for: .nudgeGeneration) ?? "llama3.1"
+        let modelId = router.modelIdentifier(for: .nudgeGeneration) ?? "llama3.1:8b"
         let summary = analysisEngine.extractedKnowledge.map { "[\($0.category)] \($0.content)" }.joined(separator: "\n")
         await analysisEngine.generateNudges(recentTranscript: recent, knowledgeSummary: summary, modelIdentifier: modelId)
         currentNudges = analysisEngine.currentNudges
@@ -87,7 +93,7 @@ final class SessionOrchestrator: ObservableObject {
     private func analyzeRecent() async {
         let recent = transcriptionManager.transcript.suffix(6).map(\.text).joined(separator: " ")
         guard !recent.isEmpty else { return }
-        let modelId = router.modelIdentifier(for: .analysis) ?? "llama3.1"
+        let modelId = router.modelIdentifier(for: .analysis) ?? "llama3.1:8b"
         await analysisEngine.analyzeTranscript(window: recent, modelIdentifier: modelId)
     }
 
@@ -107,8 +113,8 @@ final class SessionOrchestrator: ObservableObject {
     private func persistKnowledge() {
         guard let session = currentSession else { return }
         for atom in analysisEngine.extractedKnowledge {
-            let category = KnowledgeCategory(rawValue: atom.category) ?? .technicalExpertise
-            let confidence = ConfidenceLevel(rawValue: atom.confidence) ?? .medium
+            let category: KnowledgeCategory = KnowledgeCategory(rawValue: atom.category) ?? .process
+            let confidence: ConfidenceLevel = ConfidenceLevel(rawValue: atom.confidence) ?? .medium
             dataStore.createKnowledgeAtom(
                 content: atom.content,
                 category: category,
