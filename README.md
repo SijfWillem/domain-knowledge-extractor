@@ -6,10 +6,11 @@ A macOS app that captures domain knowledge from meetings and conversations in re
 
 - **Live transcription** — Captures mic audio (your voice) and system audio (remote participants) using Apple's Speech framework
 - **Knowledge extraction** — AI identifies domain knowledge from the transcript every 30s, categorized as processes, heuristics, decisions, terminology, relationships, exceptions, or tacit assumptions
-- **Smart nudges** — Generates high-reward interview questions every 15s using three techniques:
-  - **Force a choice** — "If you could only keep X or Y, which matters more?"
-  - **Speculate** — "What would break first if X doubled in volume?"
-  - **Make it personal** — "What would YOUR ideal outcome look like?"
+- **Smart nudges** — Generates high-reward interview questions every 15s. Each question combines all three techniques at once:
+  - **Forces a choice** — makes them pick, rank, or trade off
+  - **Is speculative** — pushes into a hypothetical or edge case
+  - **Is personal** — asks for their opinion, experience, or gut feel
+  - Example: *"If you could redesign X from scratch knowing what you know, what trade-off would you make differently?"*
 - **Pinnable questions** — Click a nudge to pin it; new suggestions stack on top
 - **Session history** — Browse past sessions with full transcripts grouped by speaker
 - **Knowledge base** — Search and browse all extracted knowledge across sessions
