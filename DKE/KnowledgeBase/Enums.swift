@@ -30,6 +30,46 @@ enum ConfidenceLevel: String, CaseIterable, Codable {
     case high
 }
 
+// MARK: - Language
+
+/// Supported speech recognition and analysis languages.
+enum DKELanguage: String, CaseIterable {
+    case english = "en-US"
+    case dutch = "nl-NL"
+
+    var displayName: String {
+        switch self {
+        case .english: "English"
+        case .dutch: "Nederlands (Dutch)"
+        }
+    }
+
+    var localeIdentifier: String { rawValue }
+
+    /// The language name used in LLM prompt instructions.
+    var llmInstruction: String {
+        switch self {
+        case .english: "English"
+        case .dutch: "Dutch"
+        }
+    }
+
+    private static let key = "com.dke.language"
+
+    static var current: DKELanguage {
+        get {
+            if let raw = UserDefaults.standard.string(forKey: key),
+               let lang = DKELanguage(rawValue: raw) {
+                return lang
+            }
+            return .english
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: key)
+        }
+    }
+}
+
 // MARK: - Model Type
 
 /// The type of AI model backend used for inference.

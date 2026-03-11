@@ -16,12 +16,14 @@
 		2F90F87DEAB2B14826B418A9 /* DKETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B466DAF16ED137C69AF13E04 /* DKETests.swift */; };
 		2FCE228CF86C40A5871928AC /* Prompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6BD490393137DCF222721 /* Prompts.swift */; };
 		335D075F19376112AA79C9A9 /* KnowledgeBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A87C3DFBE6F73FF50A393 /* KnowledgeBrowserView.swift */; };
+		3894E038735997B66E430327 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DD92DFDDC8D376686F6470 /* SessionDetailView.swift */; };
 		47FCB2DE15E34213775B99AD /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0126A64299849DE5B9210017 /* CoreDataModel.swift */; };
 		587D467B6EE0C28CA7F7884A /* AnthropicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB14EBA1CF1B6CA87B18C9 /* AnthropicProvider.swift */; };
 		5C1A18E6075C7BDBE72DE438 /* WhisperContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481D3D9188856AD817273D29 /* WhisperContext.swift */; };
 		69BA54F4DB4A61745B19BFDF /* SessionOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8585BC6A49AF6030FF4AFC92 /* SessionOrchestrator.swift */; };
 		6EC9A5E79FA6A17770FB6446 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2535F0593D88FE4D08D91B /* SettingsView.swift */; };
 		75EF019648BEB0BF97B40702 /* ManagedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC53F57423A307EE83B14F9 /* ManagedObjects.swift */; };
+		8C126C66F0A0D128FFB60179 /* SessionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CA60CFF8698CB6DD9E43E /* SessionHistoryView.swift */; };
 		901E05A34F856A02AA312BA8 /* OpenAICompatibleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6A378A77032DFCD14F301C /* OpenAICompatibleProvider.swift */; };
 		B206BECAB7F6D54E1A2F210D /* TranscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0764D156F433EB09349C1524 /* TranscriptionManager.swift */; };
 		B32DD3AA961F70C739AF8580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF83A8DFA3B207D77381D539 /* Assets.xcassets */; };
@@ -51,12 +53,14 @@
 		0126A64299849DE5B9210017 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		0764D156F433EB09349C1524 /* TranscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionManager.swift; sourceTree = "<group>"; };
 		0B537A52BBDC657E0532D2C7 /* DKE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		112CA60CFF8698CB6DD9E43E /* SessionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHistoryView.swift; sourceTree = "<group>"; };
 		241E77DEAB2637C886E754BF /* FloatingWidgetPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWidgetPanel.swift; sourceTree = "<group>"; };
 		356A87C3DFBE6F73FF50A393 /* KnowledgeBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBrowserView.swift; sourceTree = "<group>"; };
 		3B50C619A8308F67DE1C9ECA /* MicrophoneCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneCapture.swift; sourceTree = "<group>"; };
 		3DC53F57423A307EE83B14F9 /* ManagedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjects.swift; sourceTree = "<group>"; };
 		45F6D1C43FD4F038B52E1BC6 /* OllamaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaProvider.swift; sourceTree = "<group>"; };
 		481D3D9188856AD817273D29 /* WhisperContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperContext.swift; sourceTree = "<group>"; };
+		51DD92DFDDC8D376686F6470 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		56BC3834E673BFE316D4CC69 /* LLMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMRouter.swift; sourceTree = "<group>"; };
 		58A6BD490393137DCF222721 /* Prompts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prompts.swift; sourceTree = "<group>"; };
 		5AF224A0F2864B47D556888A /* DKE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DKE.entitlements; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				7C19799A25B1CC6F3D05933D /* KnowledgeBase */,
 				6EC05021F54D3F8A20915570 /* Models */,
 				B04C9F779AE927CF8072A515 /* Nudge */,
+				DEE5EA985B7C10A08E38B953 /* Sessions */,
 				D027AB86F437C7A5B5924083 /* Settings */,
 				827C75C067A8421E1AD38560 /* Transcription */,
 				D6D42C33FA369E1C189A4606 /* Widget */,
@@ -219,6 +224,15 @@
 				B466DAF16ED137C69AF13E04 /* DKETests.swift */,
 			);
 			path = DKETests;
+			sourceTree = "<group>";
+		};
+		DEE5EA985B7C10A08E38B953 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				51DD92DFDDC8D376686F6470 /* SessionDetailView.swift */,
+				112CA60CFF8698CB6DD9E43E /* SessionHistoryView.swift */,
+			);
+			path = Sessions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +347,8 @@
 				901E05A34F856A02AA312BA8 /* OpenAICompatibleProvider.swift in Sources */,
 				D702B7A4DD0979FC095317D1 /* PersistenceController.swift in Sources */,
 				2FCE228CF86C40A5871928AC /* Prompts.swift in Sources */,
+				3894E038735997B66E430327 /* SessionDetailView.swift in Sources */,
+				8C126C66F0A0D128FFB60179 /* SessionHistoryView.swift in Sources */,
 				69BA54F4DB4A61745B19BFDF /* SessionOrchestrator.swift in Sources */,
 				6EC9A5E79FA6A17770FB6446 /* SettingsView.swift in Sources */,
 				D228BFC9A79A496A858EC6ED /* SpeechTranscriber.swift in Sources */,

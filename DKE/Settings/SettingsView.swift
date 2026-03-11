@@ -8,8 +8,12 @@ struct SettingsView: View {
     @State private var newModelType: ModelType = .ollama
     @State private var newModelIdentifier = ""
     @State private var newApiKey = ""
+    @State private var selectedLanguage = DKELanguage.current
+    @State private var knowledgePrompt = AnalysisPrompts.knowledgeExtraction
+    @State private var nudgePrompt = AnalysisPrompts.nudgeGeneration
 
     var body: some View {
+        ScrollView {
         Form {
             Section("Registered Models") {
                 if router.providers.isEmpty {
@@ -53,12 +57,26 @@ struct SettingsView: View {
                 }
             }
 
+            Section("Language") {
+                Picker("Speech Language", selection: $selectedLanguage) {
+                    ForEach(DKELanguage.allCases, id: \.self) { lang in
+                        Text(lang.displayName).tag(lang)
+                    }
+                }
+                .onChange(of: selectedLanguage) { _, newValue in
+                    DKELanguage.current = newValue
+                    orchestrator.transcriptionManager.setLanguage(newValue)
+                }
+                Text("Sets the language for speech recognition and LLM analysis. Change before starting a session.")
+                    .font(.caption).foregroundStyle(.secondary)
+            }
+
             Section("Transcription") {
                 HStack {
                     Circle()
-                        .fill(orchestrator.transcriptionManager.speechTranscriber.isAuthorized ? Color.green : Color.orange)
+                        .fill(orchestrator.transcriptionManager.micTranscriber.isAuthorized ? Color.green : Color.orange)
                         .frame(width: 8, height: 8)
-                    Text(orchestrator.transcriptionManager.speechTranscriber.isAuthorized
+                    Text(orchestrator.transcriptionManager.micTranscriber.isAuthorized
                          ? "Speech recognition authorized"
                          : "Speech recognition not authorized")
                         .font(.caption)
@@ -66,8 +84,37 @@ struct SettingsView: View {
                 Text("Uses Apple's built-in Speech framework for on-device transcription.")
                     .font(.caption).foregroundStyle(.secondary)
             }
+
+            Section("Knowledge Extraction Prompt") {
+                TextEditor(text: $knowledgePrompt)
+                    .font(.system(.body, design: .monospaced))
+                    .frame(minHeight: 150)
+                    .onChange(of: knowledgePrompt) { _, newValue in
+                        AnalysisPrompts.knowledgeExtraction = newValue
+                    }
+                Button("Reset to Default") {
+                    AnalysisPrompts.resetKnowledgeExtraction()
+                    knowledgePrompt = AnalysisPrompts.knowledgeExtraction
+                }
+                .font(.caption)
+            }
+
+            Section("Nudge Generation Prompt") {
+                TextEditor(text: $nudgePrompt)
+                    .font(.system(.body, design: .monospaced))
+                    .frame(minHeight: 150)
+                    .onChange(of: nudgePrompt) { _, newValue in
+                        AnalysisPrompts.nudgeGeneration = newValue
+                    }
+                Button("Reset to Default") {
+                    AnalysisPrompts.resetNudgeGeneration()
+                    nudgePrompt = AnalysisPrompts.nudgeGeneration
+                }
+                .font(.caption)
+            }
         }
         .formStyle(.grouped)
+        }
         .frame(width: 500)
         .padding()
     }

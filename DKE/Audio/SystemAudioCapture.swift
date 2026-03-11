@@ -26,7 +26,10 @@ final class SystemAudioCapture: NSObject, SCStreamOutput, SCStreamDelegate {
         config.showsCursor = false
         config.capturesAudio = true
         config.excludesCurrentProcessAudio = true
-        config.sampleRate = 16000; config.channelCount = 1
+        // Capture at native quality (48kHz stereo) so ScreenCaptureKit doesn't
+        // force the audio pipeline to resample, which distorts playback.
+        // Downsampling for speech recognition happens later in the conversion step.
+        config.sampleRate = 48000; config.channelCount = 2
         let stream = SCStream(filter: filter, configuration: config, delegate: self)
         self.stream = stream
         try stream.addStreamOutput(self, type: .audio, sampleHandlerQueue: DispatchQueue(label: "com.dke.systemaudio", qos: .userInteractive))

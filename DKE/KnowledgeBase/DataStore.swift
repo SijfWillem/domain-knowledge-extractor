@@ -129,6 +129,16 @@ final class DataStore {
         return try context.fetch(request)
     }
 
+    /// Updates the text of an existing transcript segment.
+    func updateTranscriptSegment(_ segment: TranscriptSegmentMO, newText: String) {
+        segment.text = newText
+    }
+
+    /// Deletes a transcript segment.
+    func deleteTranscriptSegment(_ segment: TranscriptSegmentMO) {
+        context.delete(segment)
+    }
+
     // MARK: - KnowledgeAtom CRUD
 
     /// Creates and returns a new knowledge atom.

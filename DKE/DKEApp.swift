@@ -16,9 +16,8 @@ struct DKEApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(orchestrator: orchestrator, router: router)
+            ContentView(orchestrator: orchestrator, router: router, onStartSession: showWidget)
                 .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                .onAppear { showWidget() }
         }
         Settings {
             SettingsView(router: router, orchestrator: orchestrator)

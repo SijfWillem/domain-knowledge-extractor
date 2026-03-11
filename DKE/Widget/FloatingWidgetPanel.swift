@@ -3,7 +3,7 @@ import AppKit
 final class FloatingWidgetPanel: NSPanel {
     init() {
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: 320, height: 200),
+            contentRect: NSRect(x: 0, y: 0, width: 420, height: 200),
             styleMask: [.nonactivatingPanel, .titled, .closable, .fullSizeContentView],
             backing: .buffered,
             defer: false

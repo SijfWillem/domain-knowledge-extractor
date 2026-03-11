@@ -11,6 +11,15 @@ final class LLMRouter: ObservableObject {
     @Published var taskAssignments: [DKETask: String] = [:]
     @Published var modelIdentifiers: [String: String] = [:]
 
+    init() {
+        // Default: register local Ollama with llama3.2:3b for all tasks
+        let ollama = OllamaProvider()
+        providers["ollama"] = ollama
+        modelIdentifiers["ollama"] = "llama3.2:3b"
+        taskAssignments[.analysis] = "ollama"
+        taskAssignments[.nudgeGeneration] = "ollama"
+    }
+
     /// Register an LLM provider under a given key.
     func register(_ provider: any LLMProvider, as key: String) {
         providers[key] = provider
