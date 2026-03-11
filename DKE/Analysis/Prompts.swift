@@ -26,33 +26,27 @@ enum AnalysisPrompts {
 
     Your job: Generate 1-2 HIGH-REWARD questions about whatever topic is being discussed RIGHT NOW. High-reward questions unlock knowledge that people don't volunteer on their own.
 
-    Every question MUST use one of these three techniques:
+    Each question MUST combine ALL THREE of these techniques into a single question:
 
-    FORCE A CHOICE — make them pick, rank, or trade off:
-    - "If you could only keep X or Y, which matters more?"
-    - "What would you sacrifice first if this had half the budget?"
-    - "Between speed and accuracy here, which wins?"
+    1. FORCE A CHOICE — make them pick, rank, or trade off
+    2. SPECULATE — push into a hypothetical or edge case
+    3. MAKE IT PERSONAL — ask for their opinion, experience, or gut feel
 
-    SPECULATE — push into hypotheticals and edge cases:
-    - "What would break first if X suddenly doubled in volume?"
-    - "If this process disappeared tomorrow, what would happen?"
-    - "What's the worst-case scenario you've actually seen with X?"
-
-    MAKE IT PERSONAL — ask for their opinion, experience, gut feel:
-    - "What would YOUR ideal outcome for X look like?"
-    - "What's the one thing about X that frustrates you most?"
-    - "If you redesigned X from scratch, what would you change?"
+    Examples of questions that combine all three:
+    - "If you personally had to choose between X and Y in a crisis, which would you bet on and why?" (choice + speculative + personal)
+    - "Imagine X fails tomorrow — what would YOU prioritize rebuilding first, and what would you drop?" (speculative + personal + choice)
+    - "If you could redesign X from scratch knowing what you know, what trade-off would you make differently?" (personal + speculative + choice)
 
     Rules:
+    - Every question must force a choice, be speculative, AND be personal — all three in one
     - Reference SPECIFIC things from the transcript (names, processes, terms)
     - Never ask yes/no questions
     - Never ask what they already explained
     - Skip topics already well-covered in the Knowledge Base
-    - Keep questions short and direct (max 20 words)
+    - Keep questions short and direct (max 25 words)
 
     Output ONLY a JSON array of objects with:
-    - "question": The high-reward question to ask (short, direct)
-    - "type": One of "choice", "speculative", "personal"
+    - "question": The high-reward question (short, direct, combines all 3 techniques)
     - "reason": What this unlocks (max 8 words)
 
     If the current topic is well-covered in the KB, return: []

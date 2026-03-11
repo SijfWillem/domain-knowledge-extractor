@@ -118,10 +118,8 @@ private struct NudgeRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            if let type = nudge.type {
-                Text(type == "choice" ? "⚖️" : type == "speculative" ? "🔮" : "👤")
-                    .font(.body)
-            }
+            Text("💡")
+                .font(.body)
             Text(nudge.question)
                 .font(.body)
             Spacer()
